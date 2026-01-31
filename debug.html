@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar Debug</title>
+    <style>
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            border: 2px solid red;
+            padding: 10px;
+        }
+        .calendar-day {
+            aspect-ratio: 1;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+        .calendar-day:hover {
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calendar Debug Test</h1>
+    <div id="calendar" class="calendar-grid"></div>
+    
+    <script>
+        // Test calendar generation
+        const year = 2025;
+        const month = 11; // December (0-indexed)
+        
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const daysInPrevMonth = new Date(year, month, 0).getDate();
+        
+        const calendarGrid = document.getElementById('calendar');
+        calendarGrid.innerHTML = '';
+        
+        console.log('Month:', month, 'First day:', firstDay, 'Days in month:', daysInMonth);
+        
+        // Add previous month's days
+        for (let i = firstDay - 1; i >= 0; i--) {
+            const day = daysInPrevMonth - i;
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day';
+            dayElement.textContent = day;
+            dayElement.style.opacity = '0.3';
+            calendarGrid.appendChild(dayElement);
+        }
+        
+        // Add current month's days
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day';
+            dayElement.textContent = day;
+            calendarGrid.appendChild(dayElement);
+        }
+        
+        // Add remaining days
+        const totalCells = calendarGrid.children.length;
+        const remainingCells = 42 - totalCells;
+        
+        for (let day = 1; day <= remainingCells; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day';
+            dayElement.textContent = day;
+            dayElement.style.opacity = '0.3';
+            calendarGrid.appendChild(dayElement);
+        }
+        
+        console.log('Total cells created:', calendarGrid.children.length);
+    </script>
+</body>
+</html>

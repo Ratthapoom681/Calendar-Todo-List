@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Todo List - Quick Setup</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .option {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        .option h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 10px 10px 0;
+        }
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        .warning {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📅 Calendar Todo List - Quick Setup</h1>
+        
+        <div class="option">
+            <h3>🚀 Option 1: Quick Start (Recommended)</h3>
+            <p>Open the app directly with basic functionality. Google Calendar features will be disabled but you can still use all core features.</p>
+            <a href="index.html" class="btn">Open App Now</a>
+        </div>
+
+        <div class="option">
+            <h3>🔧 Option 2: Live Server (For Google Calendar)</h3>
+            <p>Use VS Code Live Server extension or any local server to enable Google Calendar integration.</p>
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>Install "Live Server" extension in VS Code</li>
+                <li>Right-click index.html → "Open with Live Server"</li>
+                <li>Google Calendar features will work!</li>
+            </ol>
+        </div>
+
+        <div class="option">
+            <h3>🐍 Option 3: Python Server</h3>
+            <p>If you have Python installed, you can run a simple local server:</p>
+            <ol>
+                <li>Open terminal/Command Prompt in this folder</li>
+                <li>Run: <code>python -m http.server 8000</code></li>
+                <li>Open browser to: <a href="http://localhost:8000/index.html" class="btn">http://localhost:8000</a></li>
+            </ol>
+        </div>
+
+        <div class="option">
+            <h3>📦 Option 4: Node.js Server (Full Setup)</h3>
+            <p>Use the Node.js server I created for full file-based storage and Google Calendar:</p>
+            <ol>
+                <li>Install Node.js from <a href="https://nodejs.org" target="_blank">nodejs.org</a></li>
+                <li>Run: <code>npm install</code></li>
+                <li>Run: <code>npm start</code></li>
+                <li>Open browser to: <a href="http://localhost:3000/index.html" class="btn">http://localhost:3000</a></li>
+            </ol>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Important Note about Google Calendar:</strong><br>
+            Google Calendar integration <strong>requires a local server</strong> due to OAuth2 security restrictions. It will NOT work when opening HTML directly (file://) unless you use one of the server options above.
+        </div>
+
+        <div class="option">
+            <h3>📖 Documentation</h3>
+            <p>For detailed Google Calendar setup instructions, read:</p>
+            <a href="GOOGLE_SETUP.md" class="btn">📋 Google Setup Guide</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Todo List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Google Calendar API scripts -->
+    <script async defer src="https://apis.google.com/js/api.js"
+        onload="this.onload=function(){};console.log('GAPI loaded')"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+    <script async defer src="https://accounts.google.com/gsi/client"
+        onload="this.onload=function(){};console.log('GIS loaded')">
+    </script>
+    <div class="container">
+        <header>
+            <h1>Calendar Todo List</h1>
+            <div class="month-year">
+                <button id="prevMonth">&lt;</button>
+                <span id="currentMonth"></span>
+                <button id="nextMonth">&gt;</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="calendar-container">
+                <div class="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div id="calendar" class="calendar-grid"></div>
+            </div>
+
+            <div class="todo-container">
+                <div class="todo-header">
+                    <h2 id="selectedDate">Select a date</h2>
+                    <button id="addTodoBtn">+ Add Todo</button>
+                </div>
+                <div class="data-controls">
+                    <button id="saveBtn" class="data-btn">💾 Save</button>
+                    <button id="loadBtn" class="data-btn">📁 Load</button>
+                    <button id="backupBtn" class="data-btn">🗂️ Backup</button>
+                    <button id="googleAuthBtn" class="data-btn google-btn">🔗 Google</button>
+                    <button id="syncBtn" class="data-btn sync-btn" style="display: none;">🔄 Sync</button>
+                    <input type="file" id="fileInput" accept=".json" style="display: none;">
+                </div>
+                <div id="googleStatus" class="google-status"></div>
+                <div id="todoList" class="todo-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="todoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modalTitle">Add New Todo</h3>
+            <form id="todoForm">
+                <input type="hidden" id="todoId">
+                <input type="text" id="todoTitle" placeholder="Todo title" required>
+                <input type="time" id="todoTime" placeholder="Time">
+                <textarea id="todoDescription" placeholder="Description"></textarea>
+                <input type="url" id="todoLink" placeholder="Link (optional - https://example.com)">
+                <div class="notification-options">
+                    <label>
+                        <input type="checkbox" id="enableNotification">
+                        Enable notification
+                    </label>
+                    <input type="number" id="notificationMinutes" placeholder="Minutes before" value="15" min="1">
+                </div>
+                <button type="submit" id="submitBtn">Add Todo</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="google-calendar.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
